@@ -29,11 +29,13 @@ After the if statement, result dataframe will be overwritten in the bucket.
 The script contains get_data_minio(), get_filtered_data(), get_filtered_stats() functions and MyServer class.
 
 get_data_minio() is used to get output.csv from bucket. If the file doesn`t exist then it will do process_data() imported from the above python script.
+
 get_filtered_data() is used to return filtered data from output.csv depends on is_image_exists, min_age or max_age.
 is_image_exists returns records where image_path is null when that is False or image_path is not null otherwise.
 min_age returns records where age in years equals to the minimum age in the dataframe
 max_age returns records where age in years equals to the maximum age in the dataframe
 If combine min_age and max_age it will return records where age equals to the minimum or the maximum age
+
 get_filtered_stats() is used to return stats from output.csv depends on the same parameters. I was confused about average age of data depends on min_age or max_age, because average age must be equal min or max age in that cases, so I decided to return min or max value of filtered records.
 
 Class MyServer is used to serve queries via http.
